@@ -1,0 +1,54 @@
+.list {
+  display: grid;
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.card {
+  display: flex;
+  gap: 24px;
+  padding: 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  min-width: 0;
+}
+
+/* What the system believes, as a chip so the coach can compare it with the frame. */
+.read {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  padding: 4px 14px;
+  border-radius: 999px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+
+.read strong {
+  color: var(--text);
+  font-size: 1.05rem;
+}
+
+.actions {
+  margin-top: 10px;
+}
+
+@media (max-width: 600px) {
+  .card {
+    flex-direction: column;
+    padding: 20px;
+  }
+}

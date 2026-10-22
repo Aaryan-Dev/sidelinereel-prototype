@@ -1,0 +1,46 @@
+/* Dark, glassy theme: near-black canvas, translucent surfaces, indigo brand gradient. */
+:root {
+  color-scheme: dark;
+
+  --bg: #05070c;
+  --surface: rgb(255 255 255 / 5.5%);
+  --surface-2: rgb(255 255 255 / 9%);
+  --surface-3: rgb(255 255 255 / 13%);
+  --surface-solid: #11151d;
+  --border: rgb(255 255 255 / 10%);
+  --border-strong: rgb(255 255 255 / 18%);
+
+  --text: #ffffff;
+  --muted: #b3b9c6;
+  --faint: #8d94a3;
+
+  --brand-a: #5468e0;
+  --brand-b: #3842ba;
+  --gradient-brand: linear-gradient(180deg, var(--brand-a) 0%, var(--brand-b) 100%);
+  --primary: #93a5f5;
+  --primary-text: #ffffff;
+  --focus: #93a5f5;
+
+  --success: #62d99a;
+  --success-bg: rgb(98 217 154 / 14%);
+  --warning: #f6c744;
+  --warning-bg: rgb(246 199 68 / 14%);
+  --danger: #ff8a82;
+  --danger-bg: rgb(255 138 130 / 13%);
+  --info: #93a5f5;
+  --info-bg: rgb(98 121 230 / 18%);
+
+  --pitch: #123a25;
+  --pitch-line: #2a6a47;
+  --jersey: #f1f4f9;
+  --jersey-shade: #b9c3d3;
+  --jersey-number: #0c1624;
+
+  --radius: 24px;
+  --radius-sm: 16px;
+  --shadow: inset 0 1px 0 rgb(255 255 255 / 7%);
+  --glow: 0 10px 30px -10px rgb(84 104 224 / 55%);
+  --font: 'Inter Variable', Inter, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', -apple-system,
+    'Segoe UI', Roboto, sans-serif;
+  --gutter: 20px;
+}

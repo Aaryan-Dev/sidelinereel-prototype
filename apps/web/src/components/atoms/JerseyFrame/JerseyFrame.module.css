@@ -1,0 +1,49 @@
+.frame {
+  display: block;
+  border-radius: 14px;
+  flex: none;
+  box-shadow:
+    0 0 0 1px var(--border),
+    0 10px 24px -12px rgb(0 0 0 / 70%);
+}
+
+.sm {
+  width: 76px;
+  border-radius: 10px;
+}
+
+.md {
+  width: 136px;
+}
+
+.lg {
+  width: 100%;
+  max-width: 360px;
+  border-radius: 18px;
+}
+
+.pitch {
+  fill: var(--pitch);
+}
+
+.line {
+  stroke: var(--pitch-line);
+  stroke-width: 1.5;
+  fill: none;
+}
+
+.jersey {
+  fill: var(--jersey);
+  stroke: var(--jersey-shade);
+  stroke-width: 1.5;
+}
+
+.head {
+  fill: var(--jersey-shade);
+}
+
+.number {
+  fill: var(--jersey-number);
+  font-weight: 800;
+  font-family: var(--font);
+}

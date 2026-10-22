@@ -1,0 +1,15 @@
+.box {
+  display: grid;
+  gap: 12px;
+  padding: 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.hint {
+  max-width: 66ch;
+  font-size: 0.85rem;
+  color: var(--faint);
+}

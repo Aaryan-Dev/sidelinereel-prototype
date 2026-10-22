@@ -1,0 +1,14 @@
+.section {
+  display: grid;
+  gap: 8px;
+  padding: 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+}

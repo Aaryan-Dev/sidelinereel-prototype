@@ -1,0 +1,8 @@
+.meta {
+  font-size: 0.95rem;
+}
+
+.minute {
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}

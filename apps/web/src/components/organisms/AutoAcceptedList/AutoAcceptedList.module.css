@@ -1,0 +1,22 @@
+.details {
+  padding: 4px 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.summary {
+  padding: 16px 0;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.details[open] .summary {
+  color: var(--text);
+}
+
+.list {
+  margin: 0;
+  padding: 0 0 12px;
+}

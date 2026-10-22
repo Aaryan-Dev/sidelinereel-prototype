@@ -1,0 +1,25 @@
+.panel {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 24px 28px;
+  background:
+    linear-gradient(180deg, rgb(98 121 230 / 16%) 0%, rgb(98 121 230 / 4%) 100%), var(--surface);
+  border: 1px solid rgb(147 165 245 / 25%);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.text {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+  flex: 1 1 300px;
+}
+
+.line {
+  font-size: 0.95rem;
+  color: var(--muted);
+}

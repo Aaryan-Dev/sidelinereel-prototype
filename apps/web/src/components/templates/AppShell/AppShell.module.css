@@ -1,0 +1,40 @@
+.shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+}
+
+/* Header stays in view and blurs the content scrolling beneath it. */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgb(5 7 12 / 72%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  backdrop-filter: blur(18px) saturate(140%);
+  border-bottom: 1px solid var(--border);
+}
+
+.main {
+  flex: 1;
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 36px var(--gutter) 112px;
+}
+
+.footer {
+  padding: 24px var(--gutter);
+  color: var(--faint);
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+.problem {
+  display: grid;
+  justify-items: center;
+  gap: 14px;
+  padding: 64px 0;
+  text-align: center;
+  color: var(--muted);
+}

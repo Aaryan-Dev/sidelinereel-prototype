@@ -1,0 +1,12 @@
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: flex-end;
+}
+
+.reassign {
+  display: flex;
+  gap: 8px;
+  align-items: flex-end;
+}

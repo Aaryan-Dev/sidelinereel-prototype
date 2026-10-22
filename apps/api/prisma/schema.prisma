@@ -1,0 +1,71 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+enum DecisionAction {
+  CONFIRM
+  REASSIGN
+  EXCLUDE
+}
+
+/// One isolated, seeded demo game per visitor.
+model DemoSession {
+  id         String    @id @default(uuid()) @db.Uuid
+  threshold  Float     @default(0.85)
+  sentAt     DateTime?
+  createdAt  DateTime  @default(now())
+  lastSeenAt DateTime  @default(now())
+  players    Player[]
+  clips      Clip[]
+
+  @@index([lastSeenAt])
+}
+
+model Player {
+  id        String      @id @default(uuid()) @db.Uuid
+  sessionId String      @db.Uuid
+  number    Int
+  name      String
+  session   DemoSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+
+  @@unique([sessionId, number])
+}
+
+model Clip {
+  id             String         @id @default(uuid()) @db.Uuid
+  sessionId      String         @db.Uuid
+  position       Int
+  minute         Int
+  moment         String
+  detectedNumber Int
+  confidence     Float
+  /// Number actually on the jersey in the frame; only used to draw the illustration.
+  frameNumber    Int
+  session        DemoSession    @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  decision       ClipDecision?
+  report         ParentReport?
+
+  @@index([sessionId])
+}
+
+model ClipDecision {
+  clipId    String         @id @db.Uuid
+  action    DecisionAction
+  toNumber  Int?
+  decidedAt DateTime       @default(now())
+  clip      Clip           @relation(fields: [clipId], references: [id], onDelete: Cascade)
+}
+
+model ParentReport {
+  clipId       String   @id @db.Uuid
+  playerNumber Int
+  confidence   Float
+  createdAt    DateTime @default(now())
+  clip         Clip     @relation(fields: [clipId], references: [id], onDelete: Cascade)
+}
