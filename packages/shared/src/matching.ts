@@ -35,11 +35,17 @@ export function classifyClip(
     return { route: 'review', reason: `#${clip.detected} is not on the roster` };
   }
   if (clip.confidence < threshold) {
-    return { route: 'review', reason: `Low confidence (${pct(clip.confidence)})` };
+    return {
+      route: 'review',
+      reason: `Below the ${pct(threshold)} bar (${pct(clip.confidence)} sure)`,
+    };
   }
   const similar = confusableWith(clip.detected, roster);
   if (similar.length) {
-    return { route: 'review', reason: `Roster also has ${similar.map((n) => `#${n}`).join(', ')}` };
+    return {
+      route: 'review',
+      reason: `Similar numbers on the roster: ${similar.map((n) => `#${n}`).join(', ')}`,
+    };
   }
   return { route: 'auto', reason: 'High confidence, no similar numbers on the roster' };
 }

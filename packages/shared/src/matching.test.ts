@@ -42,6 +42,19 @@ describe('classifyClip', () => {
   it('AC4: #41 with #14 on the roster is flagged and names #14', () => {
     expect(classifyClip(clip({ detected: 41, confidence: 0.99 }), roster).reason).toMatch(/#14/);
   });
+  it('says why a clip is held: the bar for low confidence, similar numbers otherwise', () => {
+    expect(classifyClip(clip({ confidence: 0.62 }), roster, 0.85).reason).toBe(
+      'Below the 85% bar (62% sure)',
+    );
+    expect(classifyClip(clip({ detected: 1, confidence: 0.91 }), roster, 0.85).reason).toBe(
+      'Similar numbers on the roster: #11, #14, #41',
+    );
+  });
+  it('the bar in the reason follows the threshold', () => {
+    expect(classifyClip(clip({ confidence: 0.9 }), roster, 0.95).reason).toBe(
+      'Below the 95% bar (90% sure)',
+    );
+  });
   it('AC12: high confidence with no confusable number is auto-accepted', () => {
     expect(classifyClip(clip({ detected: 7 }), roster).route).toBe('auto');
   });

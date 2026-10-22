@@ -2,6 +2,7 @@ import { useOutletContext } from 'react-router-dom';
 import type { SessionState } from '@sidelinereel/shared';
 import { useDecide, useThreshold, useUndo } from '../api/hooks';
 import { pluralize } from '../lib/format';
+import { useMinimumDuration } from '../lib/useMinimumDuration';
 import {
   AutoAcceptedList,
   ResolvedList,
@@ -17,6 +18,9 @@ export function CoachReviewPage() {
   const decide = useDecide();
   const undo = useUndo();
   const threshold = useThreshold();
+
+  // Keep the shimmer on screen long enough to read as feedback, even if the API answers fast.
+  const recalculating = useMinimumDuration(threshold.isPending, 600);
 
   const queue = state.clips.filter((c) => c.status === 'review');
   const resolved = state.clips.filter((c) => DECIDED.has(c.status));
@@ -37,14 +41,17 @@ export function CoachReviewPage() {
       <ReviewQueue
         clips={queue}
         roster={state.roster}
+        threshold={state.threshold}
+        loading={recalculating}
         busyClipId={decide.isPending ? decide.variables?.clipId : null}
         onDecide={(clipId, decision) => decide.mutate({ clipId, decision })}
       />
       <ResolvedList clips={resolved} roster={state.roster} onUndo={(id) => undo.mutate(id)} />
-      <AutoAcceptedList clips={auto} roster={state.roster} />
+      <AutoAcceptedList clips={auto} roster={state.roster} loading={recalculating} />
       <ThresholdControl
         threshold={state.threshold}
         onCommit={(value) => threshold.mutate(value)}
+        saving={recalculating}
       />
     </div>
   );

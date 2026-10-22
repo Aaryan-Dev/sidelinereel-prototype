@@ -8,6 +8,12 @@
   box-shadow: var(--shadow);
 }
 
+.status {
+  min-height: 1.4em;
+  font-size: 0.85rem;
+  color: var(--primary);
+}
+
 .hint {
   max-width: 66ch;
   font-size: 0.85rem;

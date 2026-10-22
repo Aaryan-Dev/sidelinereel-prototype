@@ -41,7 +41,7 @@ Open http://localhost:5173.
 ```bash
 npm run lint
 npm run typecheck
-npm test             # shared + api + web (55 tests)
+npm test             # shared + api + web (63 tests)
 ```
 
 ## Deploy (Google Cloud)

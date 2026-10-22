@@ -12,6 +12,11 @@
   color: var(--muted);
 }
 
+.count {
+  display: inline-block;
+  vertical-align: middle;
+}
+
 .details[open] .summary {
   color: var(--text);
 }
